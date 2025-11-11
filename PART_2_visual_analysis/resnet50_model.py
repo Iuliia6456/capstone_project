@@ -126,7 +126,7 @@ lpips_model = load_lpips()
 class FeatureExtractor(nn.Module):
     def __init__(self):
         super().__init__()
-        model = models.efficientnet_b0(pretrained=True)
+        model = models.resnet50(pretrained=True)
         self.features = nn.Sequential(*list(model.children())[:-1])
 
     def forward(self, x):
@@ -527,12 +527,7 @@ def run_DL_content_validation(file_type):
     avg_cpu = round(statistics.mean(cpu_log), 2) if cpu_log else 0
     avg_ram = round(statistics.mean(ram_log), 2) if ram_log else 0
 
-    # 🧾 Generate the HTML report
-    output_html = os.path.join(Path(__file__).parent, f"report_{file_type}.html")
-    generate_aggregate_html_report(all_reports, output_html, corrupted)
-    print(f"✅ Report generated: {output_html}")
-
-    # 🧩 Write performance report
+    # 🧩 Write performance report (спочатку пишемо файл)
     perf_report = results_dir / f"performance_report_{file_type}.txt"
     report_text = f"""
         === PERFORMANCE REPORT ({file_type.upper()}) ===
@@ -546,6 +541,10 @@ def run_DL_content_validation(file_type):
     print(report_text)
     print(f"📊 Performance report saved to: {perf_report}")
 
+    # 🧾 Generate the HTML report (тепер HTML побачить свіжий perf-файл)
+    output_html = os.path.join(Path(__file__).parent, f"report_{file_type}.html")
+    generate_aggregate_html_report(all_reports, output_html, corrupted)
+    print(f"✅ Report generated: {output_html}")
 
 
 if __name__ == "__main__":
