@@ -11,7 +11,7 @@ PROJECT_DIR = Path(__file__).resolve().parent
 PDF_FOLDER = PROJECT_DIR / "pdf_files"
 OUTPUT_FOLDER = PROJECT_DIR / "results"
 
-PDF_PATH = PDF_FOLDER / "Ф1 1 кв 2024  завірена БУЗОК.pdf"
+PDF_PATH = PDF_FOLDER / "Ф1 та Ф2 завірена 1 кв 2024 ПІВОНІЯ.pdf"
 OUTPUT_FOLDER.mkdir(parents=True, exist_ok=True)
 
 MODEL_NAME = "Qwen/Qwen2-VL-7B-Instruct"
