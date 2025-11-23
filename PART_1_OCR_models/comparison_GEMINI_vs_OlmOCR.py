@@ -557,7 +557,7 @@ def write_html(df: pd.DataFrame, out_html: Path, gt_path: Path, res_path: Path):
     </div>
     """
 
-    title = "Markdown Comparison Report — Gemini vs OLMOCR"
+    title = "Markdown Comparison Report — OLMOCR vs Gemini"
     subtitle = f"{gt_path.name}  ↔  {res_path.name}"
 
     html_doc = f"""<!DOCTYPE html>
@@ -751,7 +751,7 @@ def build_index_html(rows: List[Dict[str, Any]], out_path: Path):
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Gemini vs OLMOCR — Index</title>
+<title>OLMOCR vs Gemin — Index</title>
 <style>
   body {{ font-family: Segoe UI, Roboto, Helvetica, Arial, sans-serif; background:#f7f8fb; color:#111; margin:0; }}
   .topbar {{ background:#0b1020; color:#fff; padding:18px 24px; font-size:18px; font-weight:600; }}
